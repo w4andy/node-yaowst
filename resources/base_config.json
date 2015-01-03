@@ -1,0 +1,8 @@
+{
+  "sshConfigFile": {},
+  "sshOptions": {
+    "StrictHostKeyChecking": "no",
+    "UserKnownHostsFile": "/dev/null"
+  },
+  "stacks": []
+}

@@ -1,0 +1,43 @@
+{
+  "sshConfigFile": {},
+  "sshOptions": {
+    "User": "node",
+    "StrictHostKeyChecking": "no",
+    "UserKnownHostsFile": "~/.ssh/known_hosts_opsworks"
+  },
+  "stacks": [
+    {
+      "name": "opsworks_one",
+      "id": "sssssss",
+      "accessKeyId": "xxxxxxxxx",
+      "secretAccessKey": "yyyyyyyy",
+      "sshOptions": {
+        "StrictHostKeyChecking": "yes",
+        "IdentityFile": "~/.ssh/opsworks"
+      },
+      "layers": [
+        {
+          "id": "d1",
+          "name": "xx",
+          "alias": "opsworks_one_one_"
+        },
+        {
+          "id": "d2",
+          "name": "yy",
+          "alias": "opsworks_one_two_",
+          "sshOptions": {
+            "Port": 9999
+          }
+        },
+        {
+          "id": "d3",
+          "name": "zz",
+          "alias": "opsworks_one_two_",
+          "sshOptions": {
+            "User": "root"
+          }
+        }
+      ]
+    }
+  ]
+}
