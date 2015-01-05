@@ -1,0 +1,22 @@
+Host moon
+    Hostname 127.0.0.1
+    User root
+
+## yaowst begin ##
+Host opsworks_one_one_*
+    User root
+    StrictHostKeyChecking no
+    IdentityFile ~/.ssh/opsworks
+
+Host opsworks_one_one_1
+    Hostname 10.0.0.1
+
+Host opsworks_one_one_2
+    Hostname 10.0.0.2
+    User node
+
+## yaowst end ##
+
+Host sun
+    Hostname 127.0.0.1
+    User root

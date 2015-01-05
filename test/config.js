@@ -8,7 +8,7 @@ var assert = require('assert'),
   Config = require('../lib/config');
 
 suite('Config', function () {
-  var filePathWriteTest = os.tmpDir() + '/configWriteTest.json',
+  var filePathWriteTest = os.tmpDir() + '/configWriteTest_' + new Date().getTime() + '.json',
     filePathReadTest = __dirname + '/../resources/test/configReadTest.json';
 
   suiteSetup(function () {
@@ -16,7 +16,7 @@ suite('Config', function () {
   });
 
 
-  test('copy the base_config.json file', function (done) {
+  test('write the base_config.json file', function (done) {
     var config = new Config(filePathWriteTest),
       baseConfig = {
         sshConfigFile: {},
@@ -85,8 +85,7 @@ suite('Config', function () {
         },
         sshConfigFile: {
           file: null,
-          saveMode: "24/7",
-          force: false
+          saveMode: "24/7"
         }
       };
 
@@ -119,23 +118,13 @@ suite('Config', function () {
               {
                 id: 'd1',
                 name: 'xx',
-                alias: 'opsworks_one_one_',
-                sshOptions: {
-                  IdentityFile: '~/.ssh/opsworks',
-                  StrictHostKeyChecking: 'yes',
-                  UserKnownHostsFile: '~/.ssh/known_hosts_opsworks',
-                  User: 'node'
-                }
+                alias: 'opsworks_one_one_'
               },
               {
                 id: 'd2',
                 name: 'yy',
                 alias: 'opsworks_one_two_',
                 sshOptions: {
-                  IdentityFile: '~/.ssh/opsworks',
-                  StrictHostKeyChecking: 'yes',
-                  UserKnownHostsFile: '~/.ssh/known_hosts_opsworks',
-                  User: 'node',
                   Port: 9999
                 }
               },
@@ -144,9 +133,6 @@ suite('Config', function () {
                 name: 'zz',
                 alias: 'opsworks_one_two_',
                 sshOptions: {
-                  IdentityFile: '~/.ssh/opsworks',
-                  StrictHostKeyChecking: 'yes',
-                  UserKnownHostsFile: '~/.ssh/known_hosts_opsworks',
                   User: 'root'
                 }
               }
@@ -160,8 +146,7 @@ suite('Config', function () {
         },
         sshConfigFile: {
           file: null,
-          saveMode: "24/7",
-          force: false
+          saveMode: "24/7"
         }
       };
 

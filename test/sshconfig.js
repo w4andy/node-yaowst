@@ -1,0 +1,168 @@
+"use strict";
+
+/* global suite: false, setup: false, test: false,
+ teardown: false, suiteSetup: false, suiteTeardown: false */
+
+var assert = require('assert'),
+  os = require('os'), fs = require('fs'),
+  SshConfig = require('../lib/sshconfig');
+
+suite('ssh Config', function () {
+  var writeFilePath = os.tmpDir() + '/sshWriteTest_' + new Date().getTime(),
+    writeFileBackupPath = writeFilePath + '.old';
+
+  suiteSetup(function () {
+
+  });
+
+  test('read the ssh config', function (done) {
+    var sshConfig = new SshConfig({configFile: __dirname + '/../resources/test/sshConfig'});
+    sshConfig.parseConfig(function (err) {
+      if (err) {
+        done(err);
+      } else {
+        var ante = [
+            'Host moon',
+            '    Hostname 127.0.0.1',
+            '    User root',
+            ''
+          ],
+          post = [
+            '',
+            'Host sun',
+            '    Hostname 127.0.0.1',
+            '    User root',
+            ''
+          ],
+          yaost = [
+            'Host opsworks_one_one_*',
+            '    User root',
+            '    StrictHostKeyChecking no',
+            '    IdentityFile ~/.ssh/opsworks',
+            '',
+            'Host opsworks_one_one_1',
+            '    Hostname 10.0.0.1',
+            '',
+            'Host opsworks_one_one_2',
+            '    Hostname 10.0.0.2',
+            '    User node',
+            ''
+          ],
+          config = [
+            {
+              Host: 'opsworks_one_one_*',
+              User: 'root',
+              StrictHostKeyChecking: 'no',
+              IdentityFile: '~/.ssh/opsworks'
+            },
+            {
+              Host: 'opsworks_one_one_1',
+              Hostname: '10.0.0.1'
+            },
+            {
+              Host: 'opsworks_one_one_2',
+              Hostname: '10.0.0.2',
+              User: 'node'
+            }
+          ];
+        assert.strictEqual(sshConfig._stringConfig.ante.join("\n"), ante.join("\n"));
+        assert.strictEqual(sshConfig._stringConfig.post.join("\n"), post.join("\n"));
+        assert.strictEqual(sshConfig._stringConfig.yaowst.join("\n"), yaost.join("\n"));
+        assert.strictEqual(JSON.stringify(sshConfig._config), JSON.stringify(config));
+        done();
+      }
+    });
+  });
+
+  test('write config file', function (done) {
+    var sshConfig = new SshConfig({configFile: writeFilePath}),
+      startConfig = [];
+
+    startConfig.push('Host moon');
+    startConfig.push('    Hostname 127.0.0.1');
+    startConfig.push('    User root');
+    startConfig.push('');
+    startConfig.push('## yaowst begin ##');
+    startConfig.push('');
+    startConfig.push('## yaowst end ##');
+    startConfig.push('');
+    startConfig.push('Host sun');
+    startConfig.push('    Hostname 127.0.0.1');
+    startConfig.push('    User root');
+
+    // create empty file
+    fs.writeFile(writeFilePath, startConfig.join("\n"), function (err) {
+      if (err) {
+        done(err);
+      } else {
+        var config = [
+          {
+            Host: 'opsworks_one_one_*',
+            User: 'root',
+            StrictHostKeyChecking: 'no',
+            IdentityFile: '~/.ssh/opsworks'
+          },
+          {
+            Host: 'opsworks_one_one_1',
+            Hostname: '10.0.0.1'
+          },
+          {
+            Host: 'opsworks_one_one_2',
+            Hostname: '10.0.0.2',
+            User: 'node'
+          }
+        ];
+        sshConfig.writeConfig(config, function (err) {
+          if (err) {
+            done(err);
+          } else {
+            fs.exists(writeFileBackupPath, function (exists) {
+              assert.strictEqual(exists, true);
+
+              fs.readFile(writeFilePath, {encoding: 'utf8'}, function (err, actualData) {
+                if (err) {
+                  done(err);
+                } else {
+                  var expectedData = '';
+                  expectedData += "Host moon\n";
+                  expectedData += "    Hostname 127.0.0.1\n";
+                  expectedData += "    User root\n";
+                  expectedData += "\n";
+                  expectedData += "## yaowst begin ##\n";
+                  expectedData += "Host opsworks_one_one_*\n";
+                  expectedData += "    User root\n";
+                  expectedData += "    StrictHostKeyChecking no\n";
+                  expectedData += "    IdentityFile ~/.ssh/opsworks\n";
+                  expectedData += "\n";
+                  expectedData += "Host opsworks_one_one_1\n";
+                  expectedData += "    Hostname 10.0.0.1\n";
+                  expectedData += "\n";
+                  expectedData += "Host opsworks_one_one_2\n";
+                  expectedData += "    Hostname 10.0.0.2\n";
+                  expectedData += "    User node\n";
+                  expectedData += "\n";
+                  expectedData += "## yaowst end ##\n";
+                  expectedData += "\n";
+                  expectedData += "Host sun\n";
+                  expectedData += "    Hostname 127.0.0.1\n";
+                  expectedData += "    User root\n";
+
+                  assert.strictEqual(actualData, expectedData);
+                  done();
+                }
+              });
+            });
+          }
+        });
+      }
+    });
+  });
+
+  suiteTeardown(function () {
+    fs.unlink(writeFilePath);
+    if (fs.existsSync(writeFileBackupPath)) {
+      fs.unlink(writeFileBackupPath);
+    }
+  });
+
+});
