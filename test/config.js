@@ -47,8 +47,6 @@ suite('Config', function () {
           {
             name: 'opsworks_one',
             id: 'sssssss',
-            accessKeyId: 'xxxxxxxxx',
-            secretAccessKey: 'yyyyyyyy',
             sshOptions: {
               StrictHostKeyChecking: 'yes',
               IdentityFile: '~/.ssh/opsworks'
@@ -86,6 +84,10 @@ suite('Config', function () {
         sshConfigFile: {
           file: null,
           saveMode: "24/7"
+        },
+        opsWorks: {
+          accessKeyId: 'xxxxxxxxx',
+          secretAccessKey: 'yyyyyyyy'
         }
       };
 
@@ -106,8 +108,6 @@ suite('Config', function () {
           {
             name: 'opsworks_one',
             id: 'sssssss',
-            accessKeyId: 'xxxxxxxxx',
-            secretAccessKey: 'yyyyyyyy',
             sshOptions: {
               User: 'node',
               UserKnownHostsFile: '~/.ssh/known_hosts_opsworks',
@@ -136,7 +136,9 @@ suite('Config', function () {
                   User: 'root'
                 }
               }
-            ]
+            ],
+            accessKeyId: 'xxxxxxxxx',
+            secretAccessKey: 'yyyyyyyy'
           }
         ],
         sshOptions: {
@@ -147,6 +149,10 @@ suite('Config', function () {
         sshConfigFile: {
           file: null,
           saveMode: "24/7"
+        },
+        opsWorks: {
+          accessKeyId: 'xxxxxxxxx',
+          secretAccessKey: 'yyyyyyyy'
         }
       };
 

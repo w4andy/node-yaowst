@@ -1,4 +1,8 @@
 {
+  "opsWorks": {
+    "accessKeyId": "xxxxxxxxx",
+    "secretAccessKey": "yyyyyyyy"
+  },
   "sshConfigFile": {},
   "sshOptions": {
     "User": "node",
@@ -9,8 +13,6 @@
     {
       "name": "opsworks_one",
       "id": "sssssss",
-      "accessKeyId": "xxxxxxxxx",
-      "secretAccessKey": "yyyyyyyy",
       "sshOptions": {
         "StrictHostKeyChecking": "yes",
         "IdentityFile": "~/.ssh/opsworks"
