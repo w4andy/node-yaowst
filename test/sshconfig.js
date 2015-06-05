@@ -7,7 +7,7 @@ var assert = require('assert'),
   os = require('os'), fs = require('fs'),
   SshConfig = require('../lib/sshconfig');
 
-suite('ssh Config', function () {
+suite('SshConfig', function () {
   var writeFilePath = os.tmpDir() + '/sshWriteTest_' + new Date().getTime(),
     writeFileBackupPath = writeFilePath + '.old';
 

@@ -5,4 +5,5 @@ npm-debug.log
 coverage
 .idea/
 .DS_Store
-resources/test/configOpsworks.json
+resources/test/configOpsWorksLayer.json
+resources/test/configOpsWorksStack.json

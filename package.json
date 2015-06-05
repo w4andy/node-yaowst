@@ -26,10 +26,8 @@
   },
   "dependencies": {
     "aws-sdk": "^2.1.4",
-    "commander": "^2.6.0",
     "deep-extend": "^0.3.2",
-    "shelljs": "^0.3.0",
-    "tabtab": "0.0.2"
+    "shelljs": "^0.3.0"
   },
   "optionalDependencies": {},
   "devDependencies": {

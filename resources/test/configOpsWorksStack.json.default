@@ -1,0 +1,20 @@
+{
+  "opsWorks": {},
+  "sshConfigFile": {},
+  "sshOptions": {},
+  "stacks": [
+    {
+      "name": "opsworks_one",
+      "id": "<Stack Id>",
+      "accessKeyId": "<Account accessKeyId>",
+      "secretAccessKey": "<Account secretAccessKey>",
+      "postfix": "yaowst-",
+      "sshOptions": {
+        "User": "yaowst_test",
+        "StrictHostKeyChecking": "no",
+        "IdentityFile": "~/.ssh/opsworks",
+        "UserKnownHostsFile": "~/.ssh/known_hosts_opsworks"
+      }
+    }
+  ]
+}
