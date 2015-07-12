@@ -41,7 +41,7 @@ if (argv.help || argv.h) {
   console.log();
   console.log('  options');
   console.log('   -c, --config-file      the location of the yaowst config file');
-  console.log('   -o, --ssh-config-file  the loction of the openSSH config file');
+  console.log('   -o, --ssh-config-file  the location of the openSSH config file');
   console.log('   -s, --save-mode        24/7 or all, 24/7 store no instances started by auto scaling');
   console.log();
   process.exit(0);
