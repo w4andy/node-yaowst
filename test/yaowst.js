@@ -83,10 +83,11 @@ suite('Yaowst', function () {
           if (err) {
             done(err);
           } else {
-            yaowst.save({}, function(err) {
+            yaowst.save({}, function(err, cnt) {
               if (err) {
                 done(err);
               } else {
+                assert.strictEqual(cnt, 4);
                 fs.exists(sshConfigFile, function(exists) {
                   assert.strictEqual(exists, true);
                   fs.readFile(sshConfigFile, 'utf8', function (err, actualData) {
