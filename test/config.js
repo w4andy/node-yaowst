@@ -11,15 +11,34 @@ suite('Config', function () {
   var filePathWriteTest = os.tmpDir() + '/configWriteTest_' + new Date().getTime() + '.json',
     filePathReadTest = __dirname + '/../resources/test/configReadTest.json';
 
-  suiteSetup(function () {
-
+  suiteSetup(function (done) {
+    // check if read test file has 0600
+    fs.exists(filePathReadTest, function(exists) {
+      if (exists) {
+        fs.stat(filePathReadTest, function(err, fileStat) {
+          if (err) {
+            done(err);
+          } else {
+            var fileMode = parseInt(fileStat.mode.toString(8), 10).toString().substr(-3);
+            if (fileMode === '600' || fileMode === '400') {
+              done();
+            } else {
+              fs.chmod(filePathReadTest, '0600', function(err) {
+                done(err);
+              });
+            }
+          }
+        });
+      } else {
+        done();
+      }
+    });
   });
 
 
   test('write the base_config.json file', function (done) {
     var config = new Config(filePathWriteTest),
       baseConfig = {
-        sshConfigFile: {},
         sshOptions: {
           StrictHostKeyChecking: 'no',
           UserKnownHostsFile: '/dev/null'

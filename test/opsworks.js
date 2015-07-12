@@ -37,7 +37,8 @@ suite('OpsWorks', function () {
                 User: 'yaowst_test',
                 StrictHostKeyChecking: 'no',
                 IdentityFile: '~/.ssh/opsworks',
-                UserKnownHostsFile: '~/.ssh/known_hosts_opsworks'
+                UserKnownHostsFile: '~/.ssh/known_hosts_opsworks',
+                X_AutoScalingType: 'BASE_CONFIG'
               },
               {
                 Host: 'opsworks_one_two_1',
@@ -88,7 +89,8 @@ suite('OpsWorks', function () {
                 UserKnownHostsFile: '~/.ssh/known_hosts_opsworks',
                 IdentityFile: '~/.ssh/opsworks',
                 StrictHostKeyChecking: 'no',
-                User: 'yaowst_test'
+                User: 'yaowst_test',
+                X_AutoScalingType: 'BASE_CONFIG'
               },
               {
                 Host: 'yaowst-test-layer-one1',

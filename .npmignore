@@ -7,3 +7,4 @@ coverage
 .DS_Store
 resources/test/configOpsWorksLayer.json
 resources/test/configOpsWorksStack.json
+resources/test/configYaowst.json

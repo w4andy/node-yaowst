@@ -1,0 +1,31 @@
+{
+  "opsWorks": {
+    "accessKeyId": "<Account accessKeyId>",
+    "secretAccessKey": "<Account secretAccessKey>"
+  },
+  "sshConfigFile": {},
+  "sshOptions": {
+    "StrictHostKeyChecking": "no",
+    "UserKnownHostsFile": "~/.ssh/known_hosts_opsworks"
+  },
+  "stacks": [
+    {
+      "name": "opsworks_one",
+      "id": "<Stack Id>",
+      "sshOptions": {
+        "User": "yaowst_test",
+        "IdentityFile": "~/.ssh/opsworks"
+      },
+      "layers": [
+        {
+          "id": "<Layer Id>",
+          "alias": "opsworks_one_one_"
+        },
+        {
+          "id": "<Layer Id>",
+          "alias": "opsworks_one_two_"
+        }
+      ]
+    }
+  ]
+}

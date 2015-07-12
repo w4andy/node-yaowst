@@ -16,21 +16,21 @@ suite('SshConfig', function () {
   });
 
   test('read the ssh config', function (done) {
-    var sshConfig = new SshConfig({configFile: __dirname + '/../resources/test/sshConfig'});
+    var sshConfig = new SshConfig({file: __dirname + '/../resources/test/sshConfig'});
     sshConfig.parseConfig(function (err) {
       if (err) {
         done(err);
       } else {
         var ante = [
             'Host moon',
-            '    Hostname 127.0.0.1',
+            '    HostName 127.0.0.1',
             '    User root',
             ''
           ],
           post = [
             '',
             'Host sun',
-            '    Hostname 127.0.0.1',
+            '    HostName 127.0.0.1',
             '    User root',
             ''
           ],
@@ -41,10 +41,10 @@ suite('SshConfig', function () {
             '    IdentityFile ~/.ssh/opsworks',
             '',
             'Host opsworks_one_one_1',
-            '    Hostname 10.0.0.1',
+            '    HostName 10.0.0.1',
             '',
             'Host opsworks_one_one_2',
-            '    Hostname 10.0.0.2',
+            '    HostName 10.0.0.2',
             '    User node',
             ''
           ],
@@ -57,11 +57,11 @@ suite('SshConfig', function () {
             },
             {
               Host: 'opsworks_one_one_1',
-              Hostname: '10.0.0.1'
+              HostName: '10.0.0.1'
             },
             {
               Host: 'opsworks_one_one_2',
-              Hostname: '10.0.0.2',
+              HostName: '10.0.0.2',
               User: 'node'
             }
           ];
@@ -75,11 +75,11 @@ suite('SshConfig', function () {
   });
 
   test('write config file', function (done) {
-    var sshConfig = new SshConfig({configFile: writeFilePath}),
+    var sshConfig = new SshConfig({file: writeFilePath}),
       startConfig = [];
 
     startConfig.push('Host moon');
-    startConfig.push('    Hostname 127.0.0.1');
+    startConfig.push('    HostName 127.0.0.1');
     startConfig.push('    User root');
     startConfig.push('');
     startConfig.push('## yaowst begin ##');
@@ -87,7 +87,7 @@ suite('SshConfig', function () {
     startConfig.push('## yaowst end ##');
     startConfig.push('');
     startConfig.push('Host sun');
-    startConfig.push('    Hostname 127.0.0.1');
+    startConfig.push('    HostName 127.0.0.1');
     startConfig.push('    User root');
 
     // create empty file
@@ -104,11 +104,11 @@ suite('SshConfig', function () {
           },
           {
             Host: 'opsworks_one_one_1',
-            Hostname: '10.0.0.1'
+            HostName: '10.0.0.1'
           },
           {
             Host: 'opsworks_one_one_2',
-            Hostname: '10.0.0.2',
+            HostName: '10.0.0.2',
             User: 'node'
           }
         ];
@@ -125,7 +125,7 @@ suite('SshConfig', function () {
                 } else {
                   var expectedData = '';
                   expectedData += "Host moon\n";
-                  expectedData += "    Hostname 127.0.0.1\n";
+                  expectedData += "    HostName 127.0.0.1\n";
                   expectedData += "    User root\n";
                   expectedData += "\n";
                   expectedData += "## yaowst begin ##\n";
@@ -135,16 +135,16 @@ suite('SshConfig', function () {
                   expectedData += "    IdentityFile ~/.ssh/opsworks\n";
                   expectedData += "\n";
                   expectedData += "Host opsworks_one_one_1\n";
-                  expectedData += "    Hostname 10.0.0.1\n";
+                  expectedData += "    HostName 10.0.0.1\n";
                   expectedData += "\n";
                   expectedData += "Host opsworks_one_one_2\n";
-                  expectedData += "    Hostname 10.0.0.2\n";
+                  expectedData += "    HostName 10.0.0.2\n";
                   expectedData += "    User node\n";
                   expectedData += "\n";
                   expectedData += "## yaowst end ##\n";
                   expectedData += "\n";
                   expectedData += "Host sun\n";
-                  expectedData += "    Hostname 127.0.0.1\n";
+                  expectedData += "    HostName 127.0.0.1\n";
                   expectedData += "    User root\n";
 
                   assert.strictEqual(actualData, expectedData);
