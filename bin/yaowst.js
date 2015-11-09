@@ -5,9 +5,6 @@ var Yaowst = require('../'), util = require('util'), argv = require('yargs').arg
   Spinner = require('cli-spinner').Spinner,
   configFile = null, sshConfigFile = null, saveMode = null;
 
-
-//var all
-
 // config file
 if (argv.c) {
   configFile = argv.c;
@@ -40,9 +37,9 @@ if (argv.help || argv.h) {
   console.log('Usage: yaowst [options]');
   console.log();
   console.log('  options');
-  console.log('   -c, --config-file      the location of the yaowst config file');
-  console.log('   -o, --ssh-config-file  the location of the openSSH config file');
-  console.log('   -s, --save-mode        24/7 or all, 24/7 store no instances started by auto scaling');
+  console.log('   -c, --config-file      The location of the YaOWsT config file');
+  console.log('   -o, --ssh-config-file  The location of the OpenSSH config file');
+  console.log('   -s, --save-mode        24/7 or all, 24/7 store no instances that started by auto scaling');
   console.log();
   process.exit(0);
 }
@@ -57,7 +54,7 @@ var yaowst = new Yaowst({
 
   if (err && err.message === 'config file dose not exists!') {
     console.log('YaOWsT run the first time');
-    console.log('create config file and backup the existing openSSH config file');
+    console.log('Creating the config file and backup the existing OpenSSH config file');
     spinner.start();
     yaowst.firstInit({}, function(err) {
       spinner.stop(true);
@@ -73,7 +70,7 @@ var yaowst = new Yaowst({
     console.log(err);
     process.exit(1);
   } else {
-    console.log('Get running OpsWorks instances and store the hosts to the openSSH config file');
+    console.log('Get running OpsWorks instances and store the hosts to the OpenSSH config file');
     spinner.start();
     yaowst.save({saveMode: saveMode}, function(err, cnt) {
       spinner.stop(true);
@@ -81,7 +78,7 @@ var yaowst = new Yaowst({
         console.log(err);
         process.exit(1);
       } else {
-        console.log('The openSSH config file successful updated');
+        console.log('The OpenSSH config file successful updated');
         console.log(cnt + ' Entries updated (instances and base config)');
         process.exit(0);
       }

@@ -41,7 +41,8 @@ suite('Config', function () {
       baseConfig = {
         sshOptions: {
           StrictHostKeyChecking: 'no',
-          UserKnownHostsFile: '/dev/null'
+          UserKnownHostsFile: '/dev/null',
+          IdentitiesOnly: 'yes'
         },
         stacks: []
       };
@@ -98,6 +99,7 @@ suite('Config', function () {
         sshOptions: {
           StrictHostKeyChecking: 'no',
           UserKnownHostsFile: '~/.ssh/known_hosts_opsworks',
+          IdentitiesOnly: 'yes',
           User: 'node'
         },
         sshConfigFile: {
@@ -129,6 +131,7 @@ suite('Config', function () {
             id: 'sssssss',
             sshOptions: {
               User: 'node',
+              IdentitiesOnly: 'yes',
               UserKnownHostsFile: '~/.ssh/known_hosts_opsworks',
               StrictHostKeyChecking: 'yes',
               IdentityFile: '~/.ssh/opsworks'
@@ -163,6 +166,7 @@ suite('Config', function () {
         sshOptions: {
           StrictHostKeyChecking: 'no',
           UserKnownHostsFile: '~/.ssh/known_hosts_opsworks',
+          IdentitiesOnly: 'yes',
           User: 'node'
         },
         sshConfigFile: {

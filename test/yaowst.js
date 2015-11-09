@@ -56,7 +56,8 @@ suite('Yaowst', function () {
                 var baseConfig = {
                   sshOptions: {
                     StrictHostKeyChecking: 'no',
-                    UserKnownHostsFile: '/dev/null'
+                    UserKnownHostsFile: '/dev/null',
+                    IdentitiesOnly: 'yes'
                   },
                   stacks: []
                 };
@@ -99,12 +100,14 @@ suite('Yaowst', function () {
                       expectedData += "## yaowst begin ##\n";
                       expectedData += "Host opsworks_one_one_1\n";
                       expectedData += "    HostName none\n";
+                      expectedData += "    IdentitiesOnly yes\n";
                       expectedData += "    UserKnownHostsFile ~/.ssh/known_hosts_opsworks\n";
                       expectedData += "    StrictHostKeyChecking no\n";
                       expectedData += "    IdentityFile ~/.ssh/opsworks\n";
                       expectedData += "    User yaowst_test\n";
                       expectedData += "\n";
                       expectedData += "Host opsworks_one_two_*\n";
+                      expectedData += "    IdentitiesOnly yes\n";
                       expectedData += "    UserKnownHostsFile ~/.ssh/known_hosts_opsworks\n";
                       expectedData += "    StrictHostKeyChecking no\n";
                       expectedData += "    IdentityFile ~/.ssh/opsworks\n";

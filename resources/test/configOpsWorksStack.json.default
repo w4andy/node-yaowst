@@ -8,7 +8,7 @@
       "id": "<Stack Id>",
       "accessKeyId": "<Account accessKeyId>",
       "secretAccessKey": "<Account secretAccessKey>",
-      "postfix": "yaowst-",
+      "prefix": "yaowst-",
       "sshOptions": {
         "User": "yaowst_test",
         "StrictHostKeyChecking": "no",
