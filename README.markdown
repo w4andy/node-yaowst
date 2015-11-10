@@ -132,7 +132,27 @@ Store the instances in the OpenSSH config file
   - `{string} saveMode` `24/7` or `all`, `24/7` store no instances that started by auto scaling
 
 ## Tests
-
+### Single test
 ```
 npm test
 ```
+### cross node version test
+Run tests for all relevant versions of io.js/node.js
+
+#### Install nvm and all relevant versions
+```
+$ git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
+$ echo "source ~/.nvm/nvm.sh" >> ~/.bashrc
+$ nvm install 0.10
+$ nvm install 0.12
+$ nvm install iojs
+$ nvm install 4.2
+$ nvm install 5.0
+```
+
+#### run the test
+```
+./resources/tools/cross-test.sh
+```
+### cross os and cross node version test
+For the cross os tests use [vagrant-yaowst](https://github.com/w4andy/vagrant-yaowst)
