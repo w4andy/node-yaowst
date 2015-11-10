@@ -58,7 +58,7 @@ $ scp example.txt opsworks_one_1:/tmp/
 ## Config
 After the first run, YaOWsT create a config file with basic settings.
 
-The location is `~/.yaowst and has the permission `0600`.
+The location is `~/.yaowst` and has the permission `0600`.
 
 ### Base Config
 ```json
@@ -136,7 +136,7 @@ Store the instances in the OpenSSH config file
 ```
 npm test
 ```
-### cross node version test
+### Cross node version testing
 Run tests for all relevant versions of io.js/node.js
 
 #### Install nvm and all relevant versions
@@ -150,9 +150,9 @@ $ nvm install 4.2
 $ nvm install 5.0
 ```
 
-#### run the test
+#### Run the test
 ```
 ./resources/tools/cross-test.sh
 ```
-### cross os and cross node version test
+### Cross os and cross node version testing
 For the cross os tests use [vagrant-yaowst](https://github.com/w4andy/vagrant-yaowst)
