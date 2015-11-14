@@ -41,8 +41,8 @@
   "scripts": {
     "test": "node_modules/.bin/mocha ./test",
     "update": "node_modules/.bin/next-update -k",
-    "log": "changelog42 --no-author --commit-url=https://github.com/w4andy/node-yaowst/commits",
-    "clean": "rm -rf node_modules/ && rm -rf coverage/ && rm npm-debug.log"
+    "log": "node_modules/.bin/changelog42 --no-author --commit-url=https://github.com/w4andy/node-yaowst/commits",
+    "clean": "rm -rf node_modules/ && rm -f npm-debug.log"
   },
   "engines": {
     "node": ">=0.10.38"

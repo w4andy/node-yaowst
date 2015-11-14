@@ -17,20 +17,17 @@
 
 source ~/.nvm/nvm.sh
 
-nvm use 0.10
-node_modules/.bin/_mocha ./test
+VERSIONS="0.10 0.12 iojs 4.2 5.0"
 
-nvm use 0.12
-node_modules/.bin/_mocha ./test
+for v in $VERSIONS; do
+    echo "#### run test with node version $v ####"
+    nvm use "$v"
+    if [ $? -eq 0 ]; then
+        node_modules/.bin/_mocha ./test
+    else
+        echo "Can't switch to node version $v"
+    fi
+    echo "#### done test with node version $v ####"
+done
 
-nvm use iojs
-node_modules/.bin/_mocha ./test
-
-nvm use 4.2
-node_modules/.bin/_mocha ./test
-
-nvm use 4.2
-node_modules/.bin/_mocha ./test
-
-nvm use 5.0
-node_modules/.bin/_mocha ./test
+exit 0
