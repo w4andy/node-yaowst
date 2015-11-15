@@ -15,7 +15,6 @@ Stability: 1 - Experimental
   - [Config](#config)
   - [API](#api)
   - [Tests](#tests)
-  - [ChangeLog](./CHANGELOG.markdown)
   - [License](./LICENSE)
 
 ## Installation
@@ -45,6 +44,7 @@ Usage: yaowst [options]
 ```
 
 ## Examples
+
 ```
 $ yaowst
 Get running OpsWorks instances and store the hosts to the OpenSSH config file
@@ -56,11 +56,13 @@ $ scp example.txt opsworks_one_1:/tmp/
 ```
 
 ## Config
+
 After the first run, YaOWsT create a config file with basic settings.
 
 The location is `~/.yaowst` and has the permission `0600`.
 
 ### Base Config
+
 ```json
 {
   "sshOptions": {
@@ -73,6 +75,7 @@ The location is `~/.yaowst` and has the permission `0600`.
 ```
 
 ### Config with all possible settings
+
 ```json
 {
   "opsWorks": {
@@ -90,19 +93,43 @@ The location is `~/.yaowst` and has the permission `0600`.
   },
   "stacks": [
     {
-      "name": "opsworks_one",
       "id": "<OpsWorks Stack ID>",
       "accessKeyId": "<Access Key ID>",
-      "secretAccessKey": "",
-      "prefix": "aws-"
+      "secretAccessKey": "<Secret Access Key>",
+      "prefix": "aws-",
+      "sshOptions": {},
+      "layers": [
+        {
+          "id": "<OpsWorks Layer ID>",
+          "alias": "layer-1-",
+          "prefix": "aws-layer-1-",
+          "sshOptions": {}
+        }
+      ]
     }
   ]
 }
 ```
 
 ### Config description
-
- - `{object} sshOptions` [ssh config manual](http://www.openbsd.org/cgi-bin/man.cgi/OpenBSD-current/man5/ssh_config.5?query=ssh_config&sec=5)
+  - `{object} opsWorks` the default IAM credentials for all stacks
+    - `{string} accessKeyId` the access key id
+    - `{string} secretAccessKey` the secret access key
+  - `{object} sshConfigFile` OpenSSH config file settings
+    - `{string|null} file` if `null` then YaOWsT use `~/.ssh/config` as OpenSSH config file else YaOWsT use this path
+    - `{string} saveMode` `24/7` or `all`, `24/7` store only instances that run 24/7 (no time- or load-based instances)
+  - `{object} sshOptions` see the [OpenSSH client config manual](http://www.openbsd.org/cgi-bin/man.cgi/OpenBSD-current/man5/ssh_config.5?query=ssh_config&sec=5)
+  - `{object[]} stacks` this array has all stacks
+    - `{string} id` the OpsWorks Stack ID, if you use the **layers** option then you can skip this option
+    - `{string} [accessKeyId]` overwrite the default access key id
+    - `{string} [secretAccessKey]` overwrite the default secret access key
+    - `{string} [prefix]` add this prefix to all instances in this stack, only if the layer as no alias
+    - `{object} [sshOptions]` overwrite existing options and merge the another options
+    - `{object} [layers]` if this option not exists then YaOWsT check all instances in this stack
+      - `{string} id` the OpsWorks layer ID
+      - `{string} [alias]` if the instance name has numbers then YaOWsT replace eventing before the number, if the instance name has no number then the alias value will added as prefix to the instance name
+      - `{string} [prefix]` add this prefix to all instances in this stack, only if the layer as no alias
+      - `{object} [sshOptions]` overwrite existing options and merge the another options
 
 ## API
 
@@ -115,9 +142,10 @@ The location is `~/.yaowst` and has the permission `0600`.
   - `{string} configFile` The location of the YaOWsT config file
   - `{object} sshConfigFile`
     - `{string} file` The location of the OpenSSH config file
-    - `{string} saveMode` `24/7` or `all`, `24/7` store no instances that started by auto scaling
+    - `{string} saveMode` `24/7` or `all`, `24/7` store only instances that run 24/7
 
 #### yaowst.firstInit(option, callback)
+
 Create the YaOWsT config file and backup the existing OpenSSH config file
 
 **option**
@@ -125,6 +153,7 @@ Create the YaOWsT config file and backup the existing OpenSSH config file
   - `{boolean} force` overwrite the YaOWsT config file
 
 #### yaowst.save(option, callback)
+
 Store the instances in the OpenSSH config file
 
 **option**
@@ -132,14 +161,43 @@ Store the instances in the OpenSSH config file
   - `{string} saveMode` `24/7` or `all`, `24/7` store no instances that started by auto scaling
 
 ## Tests
+
+The tests are with and without AWS API request, per default the tests are without API requests.
+
+
+### Test with API Requests
+
+For the Tests with API Requests you must create as new OpsWorks Stack and copy some files.
+
+#### The OpsWorks Stack
+
+The Stack structure
+
+  - The Stack need 2 Layers
+  - in the first Layer one instance is online
+  - in the second Layer two instances are online
+
+#### The Files
+
+Copy Files and add your IAM credentials and Ids, the files are in `resources/test/`
+
+  - `configOpsWorksLayer.json.default` -> `configOpsWorksLayer.json`
+  - `configOpsWorksStack.json.default` -> `configOpsWorksStack.json`
+  - `configYaowst.json.default` -> `configYaowst.json`
+
+
 ### Single test
+
 ```
 npm test
 ```
+
 ### Cross node version testing
+
 Run tests for all relevant versions of io.js/node.js
 
 #### Install nvm and all relevant versions
+
 ```
 $ git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
 $ echo "source ~/.nvm/nvm.sh" >> ~/.bashrc
@@ -151,8 +209,11 @@ $ nvm install 5.0
 ```
 
 #### Run the test
+
 ```
 ./resources/tools/cross-test.sh
 ```
-### Cross os and cross node version testing
-For the cross os tests use [vagrant-yaowst](https://github.com/w4andy/vagrant-yaowst)
+
+### Cross OS and cross node version testing
+
+For the cross os tests you can use [vagrant-yaowst](https://github.com/w4andy/vagrant-yaowst)

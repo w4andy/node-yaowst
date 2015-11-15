@@ -1,5 +1,4 @@
 node_modules
-lib-cov
 *.log
 npm-debug.log
 coverage
