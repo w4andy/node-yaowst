@@ -1,6 +1,6 @@
 {
   "name": "yaowst",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Yet another OpsWorks ssh Tool",
   "author": {
     "name": "Andreas Diem",
@@ -39,7 +39,7 @@
   },
   "main": "./lib",
   "scripts": {
-    "test": "node_modules/.bin/mocha ./test",
+    "test": "node_modules/.bin/jshint ./ && node_modules/.bin/mocha ./test",
     "update": "node_modules/.bin/next-update -k",
     "log": "node_modules/.bin/changelog42 --no-author --commit-url=https://github.com/w4andy/node-yaowst/commits",
     "clean": "rm -rf node_modules/ && rm -f npm-debug.log"

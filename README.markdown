@@ -15,6 +15,7 @@ Stability: 1 - Experimental
   - [Config](#config)
   - [API](#api)
   - [Tests](#tests)
+  - [ChangeLog](./CHANGELOG.markdown)
   - [License](./LICENSE)
 
 ## Installation

@@ -89,6 +89,7 @@ suite('SshConfig', function () {
     startConfig.push('Host sun');
     startConfig.push('    HostName 127.0.0.1');
     startConfig.push('    User root');
+    startConfig.push('');
 
     // create empty file
     fs.writeFile(writeFilePath, startConfig.join("\n"), function (err) {
