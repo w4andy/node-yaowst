@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 "use strict";
 
-var Yaowst = require('../'), util = require('util'), argv = require('yargs').argv,
+var Yaowst = require('../'), argv = require('yargs').argv,
   Spinner = require('cli-spinner').Spinner,
   configFile = null, sshConfigFile = null, saveMode = null;
 
@@ -62,7 +62,7 @@ var yaowst = new Yaowst({
         console.log(err);
         process.exit(1);
       } else {
-        console.log('YaOWsT init complete');
+        console.log('YaOWsT init complete, now you can edit the config file "~/.yaowst"');
         process.exit(0);
       }
     });
