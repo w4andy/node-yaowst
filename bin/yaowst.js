@@ -41,6 +41,9 @@ if (argv.help || argv.h) {
   console.log('   -o, --ssh-config-file  The location of the OpenSSH config file');
   console.log('   -s, --save-mode        24/7 or all, 24/7 store no instances that started by auto scaling');
   console.log();
+  console.log('  ~/.yaowst options');
+  console.log('   The Documentation for all options are on github (https://github.com/w4andy/node-yaowst#config)');
+  console.log();
   process.exit(0);
 }
 

@@ -25,7 +25,7 @@ $ npm install yaowst -g
 $ yaowst
 YaOWsT run the first time
 Creating the config file and backup the existing OpenSSH config file
-YaOWsT init complete
+YaOWsT init complete, now you can edit the config file "~/.yaowst"
 ```
 
 ## Usage
@@ -46,6 +46,8 @@ Usage: yaowst [options]
 
 ## Examples
 
+### Shell Commands
+
 ```
 $ yaowst
 Get running OpsWorks instances and store the hosts to the OpenSSH config file
@@ -55,6 +57,60 @@ The OpenSSH config file successful updated
 $ ssh opsworks_one_1
 $ scp example.txt opsworks_one_1:/tmp/
 ```
+
+### Config
+
+```json
+{
+  "sshOptions": {
+    "StrictHostKeyChecking": "no",
+    "UserKnownHostsFile": "~/.ssh/opsworks_known_hosts",
+    "IdentitiesOnly": "yes",
+    "User": "yaowst"
+  },
+  "opsWorks": {
+    "accessKeyId": "MAIN_KEY",
+    "secretAccessKey": "MAIN_SECRET"
+  },
+  "stacks": [
+    {
+      "id": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+      "sshOptions": {
+        "IdentityFile": "~/.ssh/opsworks_yaowst.pem"
+      }
+    },
+    {
+      "sshOptions": {
+        "IdentityFile": "~/.ssh/opsworks_yaowst_1.pem"
+      },
+      "layers": [
+        {
+          "id": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+          "alias": "opsworks_one-"
+        },
+        {
+          "id": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+          "alias": "opsworks_two-"
+        }
+      ]
+    },
+    {
+      "accessKeyId": "ANOTHER_KEY",
+      "secretAccessKey": "ANOTHER_SECRET",
+      "sshOptions": {
+        "IdentityFile": "~/.ssh/opsworks_yaowst_2.pem"
+      },
+      "layers": [
+        {
+          "id": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+          "alias": "opsworks_three-"
+        }
+      ]
+    }
+  ]
+}
+```
+
 
 ## Config
 
@@ -132,57 +188,6 @@ The location is `~/.yaowst` and has the permission `0600`.
       - `{string} [prefix]` add this prefix to all instances in this stack, only if the layer as no alias
       - `{object} [sshOptions]` overwrite existing options and merge the another options
 
-### Example Config
-```json
-{
-  "sshOptions": {
-    "StrictHostKeyChecking": "no",
-    "UserKnownHostsFile": "~/.ssh/opsworks_known_hosts",
-    "IdentitiesOnly": "yes",
-    "User": "yaowst"
-  },
-  "opsWorks": {
-    "accessKeyId": "MAIN_KEY",
-    "secretAccessKey": "MAIN_SECRET"
-  },
-  "stacks": [
-    {
-      "id": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
-      "sshOptions": {
-        "IdentityFile": "~/.ssh/opsworks_yaowst.pem"
-      }
-    },
-    {
-      "sshOptions": {
-        "IdentityFile": "~/.ssh/opsworks_yaowst_1.pem"
-      },
-      "layers": [
-        {
-          "id": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
-          "alias": "opsworks_one-"
-        },
-        {
-          "id": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
-          "alias": "opsworks_two-"
-        }
-      ]
-    },
-    {
-      "accessKeyId": "ANOTHER_KEY",
-      "secretAccessKey": "ANOTHER_SECRET",
-      "sshOptions": {
-        "IdentityFile": "~/.ssh/opsworks_yaowst_2.pem"
-      },
-      "layers": [
-        {
-          "id": "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
-          "alias": "opsworks_three-"
-        }
-      ]
-    }
-  ]
-}
-```
 
 ## API
 
