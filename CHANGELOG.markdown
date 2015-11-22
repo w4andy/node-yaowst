@@ -1,6 +1,6 @@
 # [Yet another OpsWorks ssh Tool (YaOWsT)](./README.markdown) ChangeLog
 
-## 2015-11-22, [v0.1.0](https://github.com/w4andy/node-yaowst/tree/v0.0.2) **_<small>unstable</small>_**
+## 2015-11-22, [v0.0.2](https://github.com/w4andy/node-yaowst/tree/v0.0.2) **_<small>unstable</small>_**
 
 ### Commits
 
@@ -9,7 +9,7 @@
   - [[`146aede377`](https://github.com/w4andy/node-yaowst/commits/146aede377b0775580a69943c1c38333cc59df29)] - **lib/sshconfig.js**: fixed adding new line after writing the post block
 
 
-## 2015-11-15, [v0.1.0](https://github.com/w4andy/node-yaowst/tree/v0.0.1) **_<small>unstable</small>_**
+## 2015-11-15, [v0.0.1](https://github.com/w4andy/node-yaowst/tree/v0.0.1) **_<small>unstable</small>_**
 
 First release.
 
