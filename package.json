@@ -1,6 +1,6 @@
 {
   "name": "yaowst",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Yet another OpsWorks ssh Tool",
   "author": {
     "name": "Andreas Diem",
@@ -45,6 +45,6 @@
     "clean": "rm -rf node_modules/ && rm -f npm-debug.log"
   },
   "engines": {
-    "node": ">=0.10.38"
+    "node": ">=0.10.41"
   }
 }

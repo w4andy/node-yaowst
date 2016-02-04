@@ -10,14 +10,13 @@
 #
 # $ nvm install 0.10
 # $ nvm install 0.12
-# $ nvm install iojs
-# $ nvm install 4.2
-# $ nvm install 5.0
+# $ nvm install 4
+# $ nvm install 5
 #
 
 source ~/.nvm/nvm.sh
 
-VERSIONS="0.10 0.12 iojs 4.2 5.0"
+VERSIONS="0.10 0.12 4 5"
 
 for v in $VERSIONS; do
     echo "#### run test with node version $v ####"

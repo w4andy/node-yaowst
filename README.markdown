@@ -261,9 +261,8 @@ $ git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git che
 $ echo "source ~/.nvm/nvm.sh" >> ~/.bashrc
 $ nvm install 0.10
 $ nvm install 0.12
-$ nvm install iojs
-$ nvm install 4.2
-$ nvm install 5.0
+$ nvm install 4
+$ nvm install 5
 ```
 
 #### Run the test
