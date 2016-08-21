@@ -24,25 +24,25 @@ suite('SshConfig', function() {
         done(err);
       } else {
         var ante = [
-            'Host moon',
+            'Host "moon"',
             '    HostName 127.0.0.1',
             '    User root',
             ''
           ],
           post = [
             '',
-            'Host sun',
+            'Host "sun"',
             '    HostName 127.0.0.1',
             '    User root',
             ''
           ],
           yaost = [
-            'Host opsworks_one_one_*',
+            'Host "opsworks_one_one_*"',
             '    User root',
             '    StrictHostKeyChecking no',
             '    IdentityFile ~/.ssh/opsworks',
             '',
-            'Host opsworks_one_one_1',
+            'Host "opsworks_one_one_1"',
             '    HostName 10.0.0.1',
             '',
             'Host opsworks_one_one_2',
@@ -80,7 +80,7 @@ suite('SshConfig', function() {
     var sshConfig = new SshConfig({file: writeFilePath}),
       startConfig = [];
 
-    startConfig.push('Host moon');
+    startConfig.push('Host "moon"');
     startConfig.push('    HostName 127.0.0.1');
     startConfig.push('    User root');
     startConfig.push('');
@@ -88,7 +88,7 @@ suite('SshConfig', function() {
     startConfig.push('');
     startConfig.push('## yaowst end ##');
     startConfig.push('');
-    startConfig.push('Host sun');
+    startConfig.push('Host "sun"');
     startConfig.push('    HostName 127.0.0.1');
     startConfig.push('    User root');
     startConfig.push('');
@@ -127,26 +127,26 @@ suite('SshConfig', function() {
                   done(err3);
                 } else {
                   var expectedData = '';
-                  expectedData += 'Host moon\n';
+                  expectedData += 'Host "moon"\n';
                   expectedData += '    HostName 127.0.0.1\n';
                   expectedData += '    User root\n';
                   expectedData += '\n';
                   expectedData += '## yaowst begin ##\n';
-                  expectedData += 'Host opsworks_one_one_*\n';
+                  expectedData += 'Host "opsworks_one_one_*"\n';
                   expectedData += '    User root\n';
                   expectedData += '    StrictHostKeyChecking no\n';
                   expectedData += '    IdentityFile ~/.ssh/opsworks\n';
                   expectedData += '\n';
-                  expectedData += 'Host opsworks_one_one_1\n';
+                  expectedData += 'Host "opsworks_one_one_1"\n';
                   expectedData += '    HostName 10.0.0.1\n';
                   expectedData += '\n';
-                  expectedData += 'Host opsworks_one_one_2\n';
+                  expectedData += 'Host "opsworks_one_one_2"\n';
                   expectedData += '    HostName 10.0.0.2\n';
                   expectedData += '    User node\n';
                   expectedData += '\n';
                   expectedData += '## yaowst end ##\n';
                   expectedData += '\n';
-                  expectedData += 'Host sun\n';
+                  expectedData += 'Host "sun"\n';
                   expectedData += '    HostName 127.0.0.1\n';
                   expectedData += '    User root\n';
 

@@ -1,14 +1,14 @@
-Host moon
+Host "moon"
     HostName 127.0.0.1
     User root
 
 ## yaowst begin ##
-Host opsworks_one_one_*
+Host "opsworks_one_one_*"
     User root
     StrictHostKeyChecking no
     IdentityFile ~/.ssh/opsworks
 
-Host opsworks_one_one_1
+Host "opsworks_one_one_1"
     HostName 10.0.0.1
 
 Host opsworks_one_one_2
@@ -17,6 +17,6 @@ Host opsworks_one_one_2
 
 ## yaowst end ##
 
-Host sun
+Host "sun"
     HostName 127.0.0.1
     User root
