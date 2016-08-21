@@ -17,6 +17,7 @@ Stability: 1 - Experimental
   - [Tests](#tests)
   - [ChangeLog](./CHANGELOG.markdown)
   - [License](./LICENSE)
+  - [uninstall](#uninstall)
 
 ## Installation
 
@@ -274,3 +275,6 @@ $ nvm install 5
 ### Cross OS and cross node version testing
 
 For the cross os tests you can use [vagrant-yaowst](https://github.com/w4andy/vagrant-yaowst)
+
+# Uninstall
+If you uninstall yaowst then you must also delete the **yaowst** section form the ssh config file, everything between `## yaowst begin ##` and `## yaowst end ##`
