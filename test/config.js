@@ -1,17 +1,19 @@
-"use strict";
+'use strict';
 
 /* global suite: false, setup: false, test: false,
  teardown: false, suiteSetup: false, suiteTeardown: false */
 
-var assert = require('assert'),
-  os = require('os'), fs = require('fs'),
-  Config = require('../lib/config');
+var assert = require('assert');
+var os = require('os');
+var fs = require('fs');
+var path = require('path');
+var Config = require('../lib/config');
 
-suite('Config', function () {
-  var filePathWriteTest = os.tmpDir() + '/configWriteTest_' + new Date().getTime() + '.json',
-    filePathReadTest = __dirname + '/../resources/test/configReadTest.json';
+suite('Config', function() {
+  var filePathWriteTest = path.join(os.tmpDir(), 'configWriteTest_' + new Date().getTime() + '.json'),
+    filePathReadTest = path.join(__dirname, '../resources/test/configReadTest.json');
 
-  suiteSetup(function (done) {
+  suiteSetup(function(done) {
     // check if read test file has 0600
     fs.exists(filePathReadTest, function(exists) {
       if (exists) {
@@ -23,8 +25,8 @@ suite('Config', function () {
             if (fileMode === '600' || fileMode === '400') {
               done();
             } else {
-              fs.chmod(filePathReadTest, '0600', function(err) {
-                done(err);
+              fs.chmod(filePathReadTest, '0600', function(err2) {
+                done(err2);
               });
             }
           }
@@ -36,7 +38,7 @@ suite('Config', function () {
   });
 
 
-  test('write the base_config.json file', function (done) {
+  test('write the base_config.json file', function(done) {
     var config = new Config(filePathWriteTest),
       baseConfig = {
         sshOptions: {
@@ -47,7 +49,7 @@ suite('Config', function () {
         stacks: []
       };
 
-    config.writeDefaultFile(true, function (err) {
+    config.writeDefaultFile(true, function(err) {
       if (err) {
         done(err);
       } else {
@@ -60,7 +62,7 @@ suite('Config', function () {
     });
   });
 
-  test('read the config file', function (done) {
+  test('read the config file', function(done) {
     var config = new Config(filePathReadTest),
       expectedData = {
         stacks: [
@@ -104,7 +106,7 @@ suite('Config', function () {
         },
         sshConfigFile: {
           file: null,
-          saveMode: "24/7"
+          saveMode: '24/7'
         },
         opsWorks: {
           accessKeyId: 'xxxxxxxxx',
@@ -112,7 +114,7 @@ suite('Config', function () {
         }
       };
 
-    config.getConfig(function (err, configData) {
+    config.getConfig(function(err, configData) {
       if (err) {
         done(err);
       } else {
@@ -122,7 +124,7 @@ suite('Config', function () {
     });
   });
 
-  test('read the config file and enrichment the config data', function (done) {
+  test('read the config file and enrichment the config data', function(done) {
     var config = new Config(filePathReadTest),
       expectedData = {
         stacks: [
@@ -171,7 +173,7 @@ suite('Config', function () {
         },
         sshConfigFile: {
           file: null,
-          saveMode: "24/7"
+          saveMode: '24/7'
         },
         opsWorks: {
           accessKeyId: 'xxxxxxxxx',
@@ -179,7 +181,7 @@ suite('Config', function () {
         }
       };
 
-    config.getEnhancedConfig(function (err, configData) {
+    config.getEnhancedConfig(function(err, configData) {
       if (err) {
         done(err);
       } else {
@@ -190,7 +192,7 @@ suite('Config', function () {
   });
 
 
-  suiteTeardown(function () {
+  suiteTeardown(function() {
     fs.unlinkSync(filePathWriteTest);
   });
 });

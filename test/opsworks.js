@@ -1,24 +1,26 @@
-"use strict";
+'use strict';
 
 /* global suite: false, setup: false, test: false,
  teardown: false, suiteSetup: false, suiteTeardown: false */
 
-var assert = require('assert'), fs = require('fs'),
-  OpsWorks = require('../lib/opsworks');
+var assert = require('assert');
+var fs = require('fs');
+var path = require('path');
+var OpsWorks = require('../lib/opsworks');
 
-suite('OpsWorks', function () {
+suite('OpsWorks', function() {
   this.timeout(5000);
 
-  suiteSetup(function () {
+  suiteSetup(function() {
 
   });
 
-  test('get data per layer', function (done) {
-    var configFile = __dirname + '/../resources/test/configOpsWorksLayer.json';
-    fs.exists(configFile, function (exists) {
+  test('get data per layer', function(done) {
+    var configFile = path.join(__dirname, '../resources/test/configOpsWorksLayer.json');
+    fs.exists(configFile, function(exists) {
       if (exists) {
         var opsWorksConfig = require(configFile);
-        OpsWorks.fetchStackData(opsWorksConfig.stacks, function (err, data) {
+        OpsWorks.fetchStackData(opsWorksConfig.stacks, function(err, data) {
           if (err) {
             done(err);
           } else {
@@ -55,7 +57,7 @@ suite('OpsWorks', function () {
 
             // set ips to null
             var changedData = [];
-            data.forEach(function (row) {
+            data.forEach(function(row) {
               if (row.HostName) {
                 row.HostName = null;
               }
@@ -74,12 +76,12 @@ suite('OpsWorks', function () {
     });
   });
 
-  test('get data per stack', function (done) {
-    var configFile = __dirname + '/../resources/test/configOpsWorksStack.json';
-    fs.exists(configFile, function (exists) {
+  test('get data per stack', function(done) {
+    var configFile = path.join(__dirname, '../resources/test/configOpsWorksStack.json');
+    fs.exists(configFile, function(exists) {
       if (exists) {
         var opsWorksConfig = require(configFile);
-        OpsWorks.fetchStackData(opsWorksConfig.stacks, function (err, data) {
+        OpsWorks.fetchStackData(opsWorksConfig.stacks, function(err, data) {
           if (err) {
             done(err);
           } else {
@@ -112,7 +114,7 @@ suite('OpsWorks', function () {
 
             // set ips to null
             var changedData = [];
-            data.forEach(function (row) {
+            data.forEach(function(row) {
               if (row.HostName) {
                 row.HostName = null;
               }
@@ -131,7 +133,7 @@ suite('OpsWorks', function () {
     });
   });
 
-  suiteTeardown(function () {
+  suiteTeardown(function() {
 
   });
 });

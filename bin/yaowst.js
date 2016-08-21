@@ -1,9 +1,12 @@
 #!/usr/bin/env node
-"use strict";
+/* eslint no-console: 0, no-process-exit: 0 */
+'use strict';
 
-var Yaowst = require('../'), argv = require('yargs').argv,
-  Spinner = require('cli-spinner').Spinner,
-  configFile = null, sshConfigFile = null, saveMode = null;
+var Yaowst = require('../');
+var argv = require('yargs').argv;
+var Spinner = require('cli-spinner').Spinner;
+
+var configFile = null, sshConfigFile = null, saveMode = null;
 
 // config file
 if (argv.c) {
@@ -51,7 +54,7 @@ if (argv.help || argv.h) {
 var yaowst = new Yaowst({
   configFile: configFile,
   sshConfigFile: {file: sshConfigFile}
-}, function (err) {
+}, function(err) {
   var spinner = new Spinner('processing.. %s');
   spinner.setSpinnerString('|/-\\');
 
@@ -59,10 +62,10 @@ var yaowst = new Yaowst({
     console.log('YaOWsT run the first time');
     console.log('Creating the config file and backup the existing OpenSSH config file');
     spinner.start();
-    yaowst.firstInit({}, function(err) {
+    yaowst.firstInit({}, function(err2) {
       spinner.stop(true);
-      if (err) {
-        console.log(err);
+      if (err2) {
+        console.log(err2);
         process.exit(1);
       } else {
         console.log('YaOWsT init complete, now you can edit the config file "~/.yaowst"');
@@ -75,10 +78,10 @@ var yaowst = new Yaowst({
   } else {
     console.log('Get running OpsWorks instances and store the hosts to the OpenSSH config file');
     spinner.start();
-    yaowst.save({saveMode: saveMode}, function(err, cnt) {
+    yaowst.save({saveMode: saveMode}, function(err3, cnt) {
       spinner.stop(true);
-      if (err) {
-        console.log(err);
+      if (err3) {
+        console.log(err3);
         process.exit(1);
       } else {
         console.log('The OpenSSH config file successful updated');
@@ -88,6 +91,4 @@ var yaowst = new Yaowst({
     });
   }
 });
-
-
 
