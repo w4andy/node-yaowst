@@ -11,12 +11,12 @@
 # $ nvm install 0.10
 # $ nvm install 0.12
 # $ nvm install 4
-# $ nvm install 5
+# $ nvm install 6
 #
 
 source ~/.nvm/nvm.sh
 
-VERSIONS="0.10 0.12 4 5"
+VERSIONS="0.10 0.12 4 6"
 
 for v in $VERSIONS; do
     echo "#### run test with node version $v ####"

@@ -1,9 +1,11 @@
 node_modules
 *.log
-npm-debug.log
+.nyc_output
+*.heapsnapshot
 coverage
 .idea/
 .DS_Store
+.tags
 resources/test/configOpsWorksLayer.json
 resources/test/configOpsWorksStack.json
 resources/test/configYaowst.json
