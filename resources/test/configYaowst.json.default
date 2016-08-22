@@ -1,7 +1,8 @@
 {
   "opsWorks": {
     "accessKeyId": "<Account accessKeyId>",
-    "secretAccessKey": "<Account secretAccessKey>"
+    "secretAccessKey": "<Account secretAccessKey>",
+    "region": "us-east-1"
   },
   "sshConfigFile": {},
   "sshOptions": {

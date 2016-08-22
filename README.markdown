@@ -17,7 +17,7 @@ Stability: 1 - Experimental
   - [Tests](#tests)
   - [ChangeLog](./CHANGELOG.markdown)
   - [License](./LICENSE)
-  - [uninstall](#uninstall)
+  - [Uninstall](#uninstall)
 
 ## Installation
 
@@ -71,7 +71,8 @@ $ scp example.txt opsworks_one_1:/tmp/
   },
   "opsWorks": {
     "accessKeyId": "MAIN_KEY",
-    "secretAccessKey": "MAIN_SECRET"
+    "secretAccessKey": "MAIN_SECRET",
+    "region": "OPSWORKS_REGION"
   },
   "stacks": [
     {
@@ -123,6 +124,9 @@ The location is `~/.yaowst` and has the permission `0600`.
 
 ```json
 {
+  "opsWorks": {
+    "region": "us-east-1"
+  },
   "sshOptions": {
     "StrictHostKeyChecking": "no",
     "UserKnownHostsFile": "/dev/null",
@@ -138,7 +142,8 @@ The location is `~/.yaowst` and has the permission `0600`.
 {
   "opsWorks": {
     "accessKeyId": "<Access Key ID>",
-    "secretAccessKey": "<Secret Access Key>"
+    "secretAccessKey": "<Secret Access Key>",
+    "region": "<OpsWorks Region>"
   },
   "sshConfigFile": {
     "file": null,
@@ -154,6 +159,7 @@ The location is `~/.yaowst` and has the permission `0600`.
       "id": "<OpsWorks Stack ID>",
       "accessKeyId": "<Access Key ID>",
       "secretAccessKey": "<Secret Access Key>",
+      "region": "<OpsWorks Region>",
       "prefix": "aws-",
       "sshOptions": {},
       "layers": [
@@ -173,6 +179,7 @@ The location is `~/.yaowst` and has the permission `0600`.
   - `{object} opsWorks` the default IAM credentials for all stacks
     - `{string} accessKeyId` the access key id
     - `{string} secretAccessKey` the secret access key
+    - `{string} region` the default OpsWork region
   - `{object} sshConfigFile` OpenSSH config file settings
     - `{string|null} file` if `null` then YaOWsT use `~/.ssh/config` as OpenSSH config file else YaOWsT use this path
     - `{string} saveMode` `24/7` or `all`, `24/7` store only instances that run 24/7 (no time- or load-based instances)
@@ -181,6 +188,7 @@ The location is `~/.yaowst` and has the permission `0600`.
     - `{string} id` the OpsWorks Stack ID, if you use the **layers** option then you can skip this option
     - `{string} [accessKeyId]` overwrite the default access key id
     - `{string} [secretAccessKey]` overwrite the default secret access key
+    - `{string} [region]` overwrite the default OpsWorks region
     - `{string} [prefix]` add this prefix to all instances in this stack, only if the layer as no alias
     - `{object} [sshOptions]` overwrite existing options and merge the another options
     - `{object} [layers]` if this option not exists then YaOWsT check all instances in this stack
@@ -263,7 +271,7 @@ $ echo "source ~/.nvm/nvm.sh" >> ~/.bashrc
 $ nvm install 0.10
 $ nvm install 0.12
 $ nvm install 4
-$ nvm install 5
+$ nvm install 6
 ```
 
 #### Run the test

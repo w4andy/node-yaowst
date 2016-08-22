@@ -8,6 +8,7 @@
       "id": "<Stack Id>",
       "accessKeyId": "<Account accessKeyId>",
       "secretAccessKey": "<Account secretAccessKey>",
+      "region": "us-east-1",
       "prefix": "yaowst-",
       "sshOptions": {
         "User": "yaowst_test",

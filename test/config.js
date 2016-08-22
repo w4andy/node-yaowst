@@ -41,6 +41,9 @@ suite('Config', function() {
   test('write the base_config.json file', function(done) {
     var config = new Config(filePathWriteTest),
       baseConfig = {
+        opsWorks: {
+          region: 'us-east-1'
+        },
         sshOptions: {
           StrictHostKeyChecking: 'no',
           UserKnownHostsFile: '/dev/null',
@@ -109,6 +112,7 @@ suite('Config', function() {
           saveMode: '24/7'
         },
         opsWorks: {
+          region: 'us-east-1',
           accessKeyId: 'xxxxxxxxx',
           secretAccessKey: 'yyyyyyyy'
         }
@@ -162,7 +166,8 @@ suite('Config', function() {
               }
             ],
             accessKeyId: 'xxxxxxxxx',
-            secretAccessKey: 'yyyyyyyy'
+            secretAccessKey: 'yyyyyyyy',
+            region: 'us-east-1'
           }
         ],
         sshOptions: {
@@ -176,6 +181,7 @@ suite('Config', function() {
           saveMode: '24/7'
         },
         opsWorks: {
+          region: 'us-east-1',
           accessKeyId: 'xxxxxxxxx',
           secretAccessKey: 'yyyyyyyy'
         }

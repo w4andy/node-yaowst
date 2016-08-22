@@ -56,6 +56,9 @@ suite('Yaowst', function() {
                 done(err3);
               } else {
                 var baseConfig = {
+                  opsWorks: {
+                    region: 'us-east-1'
+                  },
                   sshOptions: {
                     StrictHostKeyChecking: 'no',
                     UserKnownHostsFile: '/dev/null',
