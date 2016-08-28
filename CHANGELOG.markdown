@@ -1,6 +1,6 @@
 # [Yet another OpsWorks ssh Tool (YaOWsT)](./README.markdown) ChangeLog
 
-## 2015-11-22, [v0.1.0](https://github.com/w4andy/node-yaowst/tree/v0.1.0) **_<small>unstable</small>_**
+## 2016-08-28, [v0.1.0](https://github.com/w4andy/node-yaowst/tree/v0.1.0) **_<small>unstable</small>_**
 
 ### Notable changes
  - add OpsWorks region to the config
