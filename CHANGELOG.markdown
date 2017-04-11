@@ -14,7 +14,7 @@
   - [[`5ffbd328cd`](https://github.com/w4andy/node-yaowst/commit/5ffbd328cd6c9cabe0855eaa4416a723a3a00f46)] - **lib/sshconfig.js**: add double quote to the host
   - [[`94dc9ab1ec`](https://github.com/w4andy/node-yaowst/commit/94dc9ab1ec61dfa85210bb6c5a9f1fdd7373e7ed)] - **test**: add nyc and add node v6 to the .travis.yml
   - [[`49c2efc4b6`](https://github.com/w4andy/node-yaowst/commit/49c2efc4b6ea25fb43d89e54c01b169a7c1bca01)] - **test**: use eslint instead of jshint
-  - [[`81f7bd0f1b`](https://github.com/w4andy/node-yaowst/commit/81f7bd0f1b676abed7bd4bdbfa8586c2d2acbfac)] - **test**u pdate node version
+  - [[`81f7bd0f1b`](https://github.com/w4andy/node-yaowst/commit/81f7bd0f1b676abed7bd4bdbfa8586c2d2acbfac)] - **test** update node version
 
 
 ## 2015-11-22, [v0.0.2](https://github.com/w4andy/node-yaowst/tree/v0.0.2) **_<small>unstable</small>_**
