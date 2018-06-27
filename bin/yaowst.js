@@ -2,11 +2,11 @@
 /* eslint no-console: 0, no-process-exit: 0 */
 'use strict';
 
-var Yaowst = require('../');
-var argv = require('yargs').argv;
-var Spinner = require('cli-spinner').Spinner;
+const Yaowst = require('../');
+const argv = require('yargs').argv;
+const Spinner = require('cli-spinner').Spinner;
 
-var configFile = null, sshConfigFile = null, saveMode = null;
+let configFile = null, sshConfigFile = null, saveMode = null;
 
 // config file
 if (argv.c) {
@@ -51,11 +51,11 @@ if (argv.help || argv.h) {
 }
 
 
-var yaowst = new Yaowst({
+const yaowst = new Yaowst({
   configFile: configFile,
   sshConfigFile: {file: sshConfigFile}
 }, function(err) {
-  var spinner = new Spinner('processing.. %s');
+  const spinner = new Spinner('processing.. %s');
   spinner.setSpinnerString('|/-\\');
 
   if (err && err.message === 'config file dose not exists!') {

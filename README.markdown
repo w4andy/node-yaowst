@@ -4,10 +4,6 @@
 
 [![Build Status](https://travis-ci.org/w4andy/node-yaowst.svg)](https://travis-ci.org/w4andy/node-yaowst)
 
-```js
-Stability: 1 - Experimental
-```
-
 ## Table of Contents
 
   - [Usage](#usage)
@@ -268,10 +264,9 @@ Run tests for all relevant versions of io.js/node.js
 ```
 $ git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
 $ echo "source ~/.nvm/nvm.sh" >> ~/.bashrc
-$ nvm install 0.10
-$ nvm install 0.12
 $ nvm install 4
 $ nvm install 6
+$ nvm install 8
 ```
 
 #### Run the test

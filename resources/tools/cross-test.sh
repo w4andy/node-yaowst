@@ -8,15 +8,14 @@
 # $ git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
 # $ echo "source ~/.nvm/nvm.sh" >> ~/.bashrc
 #
-# $ nvm install 0.10
-# $ nvm install 0.12
-# $ nvm install 4
 # $ nvm install 6
+# $ nvm install 8
+# $ nvm install 10
 #
 
 source ~/.nvm/nvm.sh
 
-VERSIONS="0.10 0.12 4 6"
+VERSIONS="6 8 10"
 
 for v in $VERSIONS; do
     echo "#### run test with node version $v ####"
