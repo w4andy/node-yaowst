@@ -4,10 +4,6 @@
 
 [![Build Status](https://travis-ci.org/w4andy/node-yaowst.svg)](https://travis-ci.org/w4andy/node-yaowst)
 
-```js
-Stability: 1 - Experimental
-```
-
 ## Table of Contents
 
   - [Usage](#usage)

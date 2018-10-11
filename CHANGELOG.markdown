@@ -1,8 +1,20 @@
 # [Yet another OpsWorks ssh Tool (YaOWsT)](./README.markdown) ChangeLog
 
-## 2016-08-28, [v0.1.0](https://github.com/w4andy/node-yaowst/tree/v0.1.0) **_<small>unstable</small>_**
+## 2018-09-11, [v0.1.1](https://github.com/w4andy/node-yaowst/tree/v0.1.1)
+
+### Commits
+
+  - [[`7f3f9d6724`](https://github.com/w4andy/node-yaowst/commit/7f3f9d6724b2b81ce1a2a706754e070b77287ce6)] - **CHANGELOG**: fix commit urls
+  - [[`656b0451f9`](https://github.com/w4andy/node-yaowst/commit/656b0451f9de8e6735a9ef2f73aa4a588792f839)] - **deps**: aws-sdk v2.332.0, cli-spinner v0.2.8, deep-extend v0.6.0, shelljs v0.8.2, step v1.0.0, yargs v12.0.2, eslint v5.6.1, mocha v5.2.0, next-update v3.6.0, nyc v13.0.1
+  - [[`a3e9953812`](https://github.com/w4andy/node-yaowst/commit/a3e99538127b5bbb1d4cded282f4507ddb04b2f7)] - **doc**: update email address
+  - [[`ce212489e3`](https://github.com/w4andy/node-yaowst/commit/ce212489e3c39c3fe41e719ac4c9eacfecd9920b)] - **doc**: fix changelog
+  - [[`9c62c13d7f`](https://github.com/w4andy/node-yaowst/commit/9c62c13d7f75f132ebc6b6020ff77974155db955)] - **test**: fix sshconfig suiteTeardown
+  - [[`14032cedaa`](https://github.com/w4andy/node-yaowst/commit/14032cedaa9a7401de65691af0673542923e5810)] - fix release date
+
+## 2016-08-28, [v0.1.0](https://github.com/w4andy/node-yaowst/tree/v0.1.0)
 
 ### Notable changes
+
  - add OpsWorks region to the config
 
 ### Commits
@@ -17,7 +29,7 @@
   - [[`81f7bd0f1b`](https://github.com/w4andy/node-yaowst/commit/81f7bd0f1b676abed7bd4bdbfa8586c2d2acbfac)] - **test** update node version
 
 
-## 2015-11-22, [v0.0.2](https://github.com/w4andy/node-yaowst/tree/v0.0.2) **_<small>unstable</small>_**
+## 2015-11-22, [v0.0.2](https://github.com/w4andy/node-yaowst/tree/v0.0.2)
 
 ### Commits
 
@@ -26,7 +38,7 @@
   - [[`146aede377`](https://github.com/w4andy/node-yaowst/commit/146aede377b0775580a69943c1c38333cc59df29)] - **lib/sshconfig.js**: fixed adding new line after writing the post block
 
 
-## 2015-11-15, [v0.0.1](https://github.com/w4andy/node-yaowst/tree/v0.0.1) **_<small>unstable</small>_**
+## 2015-11-15, [v0.0.1](https://github.com/w4andy/node-yaowst/tree/v0.0.1)
 
 First release.
 
