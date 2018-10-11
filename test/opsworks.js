@@ -24,15 +24,16 @@ suite('OpsWorks', function() {
           if (err) {
             done(err);
           } else {
-            var expectedData = [{
-              Host: 'opsworks_one_one_1',
-              HostName: null,
-              X_AutoScalingType: '24/7',
-              User: 'yaowst_test',
-              StrictHostKeyChecking: 'no',
-              IdentityFile: '~/.ssh/opsworks',
-              UserKnownHostsFile: '~/.ssh/known_hosts_opsworks'
-            },
+            var expectedData = [
+              {
+                Host: 'opsworks_one_one_1',
+                HostName: null,
+                X_AutoScalingType: '24/7',
+                User: 'yaowst_test',
+                StrictHostKeyChecking: 'no',
+                IdentityFile: '~/.ssh/opsworks',
+                UserKnownHostsFile: '~/.ssh/known_hosts_opsworks'
+              },
               {
                 Host: 'opsworks_one_two_*',
                 Port: 9999,
@@ -51,7 +52,8 @@ suite('OpsWorks', function() {
                 Host: 'opsworks_one_two_2',
                 HostName: null,
                 X_AutoScalingType: '24/7'
-              }];
+              }
+            ];
 
             expectedData.sort();
 
