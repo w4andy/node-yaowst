@@ -162,9 +162,9 @@ suite('SshConfig', function() {
   });
 
   suiteTeardown(function() {
-    fs.unlink(writeFilePath);
+    fs.unlinkSync(writeFilePath);
     if (fs.existsSync(writeFileBackupPath)) {
-      fs.unlink(writeFileBackupPath);
+      fs.unlinkSync(writeFileBackupPath);
     }
   });
 
